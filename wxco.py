@@ -27,7 +27,7 @@ class wxConfigObj(wx.Dialog):
         btnSizer = self.mkButtons()
 
         mainSizer = wx.BoxSizer(wx.VERTICAL)
-        mainSizer.Add(bxsSizer, 0, wx.ALL|wx.EXPAND, 5)
+        mainSizer.Add(bxsSizer, 1, wx.ALL|wx.EXPAND, 5)
         mainSizer.Add(btnSizer, 0, wx.ALL|wx.ALIGN_RIGHT, 5)
 
         self.SetSizerAndFit(mainSizer)
