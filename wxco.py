@@ -3,6 +3,8 @@
 import wx
 import configobj
 
+from wx.lib.scrolledpanel import ScrolledPanel
+
 
 def _remove_duplicates(iterable):
     seen = set()
@@ -37,22 +39,25 @@ class wxConfigObj(wx.Dialog):
     def mkBoxes(self):
         font = wx.Font(10, wx.SWISS, wx.NORMAL, wx.BOLD)
 
+        scroll = ScrolledPanel(self)
         sizer = wx.FlexGridSizer(len(self.config), 2)
         sizer.AddGrowableCol(1)
 
         for key, value in self.config.items():
-            lbl = wx.StaticText(self, label=key)
+            lbl = wx.StaticText(scroll, label=key)
             lbl.SetFont(font)
             sizer.Add(lbl, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5)
 
             if isinstance(value, list):
-                inp = wx.ComboBox(self, name=key, value=value[0], choices=value)
+                inp = wx.ComboBox(scroll, name=key, value=value[0], choices=value)
             else:
-                inp = wx.TextCtrl(self, name=key, value=value)
+                inp = wx.TextCtrl(scroll, name=key, value=value)
 
             sizer.Add(inp, 0, wx.ALL|wx.EXPAND, 5)
 
-        return sizer
+        scroll.SetSizer(sizer)
+        scroll.SetupScrolling()
+        return scroll
 
 
     def mkButtons(self):
