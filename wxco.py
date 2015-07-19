@@ -20,7 +20,7 @@ def _move_to_front(item, iterable):
 
 class wxConfigObj(wx.Dialog):
 
-    def __init__(self, iniFile="config.ini"):
+    def __init__(self, iniFile):
         self.config = configobj.ConfigObj(iniFile)
 
         title = "{} - {}".format(iniFile, type(self).__name__)
@@ -93,8 +93,8 @@ class wxConfigObj(wx.Dialog):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("file", help="name of the .ini file", nargs='?')
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("file", help="name of the .ini file", nargs='?', default="config.ini")
     args = parser.parse_args()
 
     app = wx.App()
