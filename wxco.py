@@ -22,6 +22,14 @@ def _move_to_front(item, iterable):
     return iterable
 
 
+def argHandler():
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("file", help="name of the .ini file", nargs='?', default="config.ini")
+    args = parser.parse_args()
+    return args.file
+
+
+
 class wxConfigObj(wx.Dialog):
 
     def __init__(self, iniFile):
@@ -97,12 +105,8 @@ class wxConfigObj(wx.Dialog):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("file", help="name of the .ini file", nargs='?', default="config.ini")
-    args = parser.parse_args()
-
     app = wx.App()
-    wxConfigObj(args.file)
+    wxConfigObj(argHandler())
 
 
 
