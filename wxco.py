@@ -2,6 +2,7 @@
 
 import wx
 import configobj
+import argparse
 
 from wx.lib.scrolledpanel import ScrolledPanel
 
@@ -92,8 +93,12 @@ class wxConfigObj(wx.Dialog):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", help="name of the .ini file", nargs='?')
+    args = parser.parse_args()
+
     app = wx.App()
-    dlg = wxConfigObj()
+    wxConfigObj(args.file)
 
 
 
