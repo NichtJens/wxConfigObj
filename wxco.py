@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+"""
+GUI editor for .ini config files using wxPython and ConfigObj
+"""
+
 import wx
 import configobj
 import argparse
@@ -93,7 +97,7 @@ class wxConfigObj(wx.Dialog):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("file", help="name of the .ini file", nargs='?', default="config.ini")
     args = parser.parse_args()
 
