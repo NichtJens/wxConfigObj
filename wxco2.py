@@ -26,15 +26,12 @@ def argHandler():
 
 
 class wxConfigObj2(wx.Frame):
-    """
-    A GUI example using pysctl from wxPython
-    """
 
     def __init__(self, iniFile, debug=False, actually_write=True):
         """
         Create (and Show) this Frame, a main panel/sizer, and the status icons
         If debug is True, print logging info
-        If actually_write is False, pysctl.write() is not called
+        If actually_write is False, config.write() is not called
         """
         self.config = configobj.ConfigObj(iniFile)
 
@@ -209,7 +206,7 @@ class wxConfigObj2(wx.Frame):
 
 
     def onButtonClick(self, event):
-        """Evaluate content of textbox if needed, pysctl.write() it otherwise"""
+        """Evaluate content of textbox if needed, config.write() it otherwise"""
         name = self.get_name(event)
 
         if self.debug:
